@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Tokyo Gourmet Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <style>html,body{height:100%;}body{padding:0;margin:0;}h1{padding:0;margin:0;font-size:50%;}</style> -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header><img src="./img/head_image2.png" alt=""></header>
+    <!-- MAP[START] -->
+    <!-- <h1>My Tokyo Gourmet Map</h1> -->
+    <div id="myMap" style="position:relative;width:100%;height:450px;"></div>
+    <!-- MAP[END] -->
+    <!-- Area[START] -->
+    <div class="area_container">
+    <h2>銀座・有楽町</h2>
+    <div>
+        <h3>シェ・トモ</h3>
+        <p>ジャンル：フレンチ</p>
+        <p>利用シーン：記念日・お祝い</p>
+        <p>MY評価：★★★★★</p>
+        <button id="map_btn1">場所を確認</button>
+    </div>
+    <div>
+        <h3>牛の達人 GINZA</h3>
+        <p>ジャンル：焼肉</p>
+        <p>利用シーン：デート</p>
+        <p>MY評価：★★★★</p>
+        <button id="map_btn3">場所を確認</button>
+    </div>
+    <div>
+        <h3>TROIS VISAGES<span>◎</span></h3>
+        <p>ジャンル：フレンチ</p>
+        <p>利用シーン：女子会</p>
+        <p>MY評価：--</p>
+        <button id="map_btn4">場所を確認</button>
+    </div> 
+    <h2>表参道</h2>
+    <div>
+        <h3>表参道 RESTAURANT HYENE<span>◎</span></h3>
+        <p>ジャンル：フレンチ</p>
+        <p>利用シーン：女子会</p>
+        <p>MY評価：--</p>
+        <button id="map_btn5">場所を確認</button>
+    </div>
+    <div>
+        <h3>ラス</h3>
+        <p>ジャンル：フレンチ</p>
+        <p>利用シーン：女子会</p>
+        <p>MY評価：★★★★★</p>
+        <button id="map_btn6">場所を確認</button>
+    </div>
+    <h2>恵比寿</h2>
+    <div>
+        <h3>ロウリーズ・ザ・プライムリブ</h3>
+        <p>ジャンル：アメリカン</p>
+        <p>利用シーン：デート</p>
+        <p>MY評価：★★★★</p>
+        <button id="map_btn7">場所を確認</button>
+    </div>
+    <h2>神楽坂</h2>
+    <div>
+        <h3>ベルトラン ラーシェ ル ブルターニュ 神楽坂<span>◎</span></h3>
+        <p>ジャンル：フレンチ</p>
+        <p>利用シーン：デート</p>
+        <p>MY評価：--</p>
+        <button id="map_btn8">場所を確認</button>
+    </div>
+</div>
+    <!-- Area[END] -->
+    <script
+        src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=[***Your Map KEY***]'
+        async defer></script>
+    <script src="../js/BmapQuery.js"></script>
+    <script>
+        //init
+        function GetMap() {
+            //------------------------------------------------------------------------
+            //1. Instance
+            //------------------------------------------------------------------------
+            const map = new Bmap("#myMap");
+            //------------------------------------------------------------------------
+            //2. Display Map
+            //------------------------------------------------------------------------
+            map.startMap(35.67292638799392, 139.73646583067904, "load", 12);
+
+            //----------------------------------------------------
+            //3. Infobox
+            //   options = new Array();
+            //   options[index] = { lat, lon, width, height, title, pinColor, description, show };
+            //----------------------------------------------------
+            const options = [];
+            options[0] = {
+                "lat": 35.67428832950089,
+                "lon": 139.76796921774195,
+                "title": "シェ・トモ",
+                "pinColor": "#ff0000",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：フレンチ<br>利用シーン：記念日・お祝い<br><a href="https://tabelog.com/tokyo/A1301/A130101/13097935/" target="_blank">食べログページ</a><img src="../img/chez_tomo.jpg" width=100%>',
+                "show": false
+            };
+
+            options[1] = {
+                "lat": 35.6661956685896,
+                "lon": 139.71709717116514,
+                "title": "ラス",
+                "pinColor": "#ff0000",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：フレンチ<br>利用シーン：デート・女子会<br><a href="https://tabelog.com/tokyo/A1306/A130602/13137097/" target="_blank">食べログページ</a><img src="../img/las.jpg" width="100%">',
+                "show": false
+            };
+            options[2] = {
+                "lat": 35.64288308081484,
+                "lon": 139.71375083067903,
+                "title": "ロウリーズ・ザ・プライムリブ 恵比寿ガーデンプレイス店",
+                "pinColor": "#ff0000",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：アメリカン<br>利用シーン：デート<br><a href="https://tabelog.com/tokyo/A1303/A130302/13165420/" target="_blank">食べログページ</a><img src="../img/lawrys.jpg" width="100%">',
+                "show": false
+            }
+            options[3] = {
+                "lat": 35.675076079165294,
+                "lon": 139.7669880153395,
+                "title": "牛の達人 GINZA",
+                "pinColor": "#ff0000",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：焼肉<br>利用シーン：デート<br><a href="https://tabelog.com/tokyo/A1301/A130101/13282274/" target="_blank">食べログページ</a><img src="../img/tatsujin.jpg" width="100%">',
+                "show": false
+            };
+            options[4] = {
+                "lat": 35.66779956437675,
+                "lon": 139.76562538466047,
+                "title": "TROIS VISAGES",
+                "pinColor": "blue",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：フレンチ<br>利用シーン：女子会<br><a href="https://tabelog.com/tokyo/A1313/A131301/13270715/" target="_blank">食べログページ</a><img src="../img/TROIS_VISAGES.jpg" width="100%">',
+                "show": false
+            };
+            options[5] = {
+                "lat": 35.702309825116835,
+                "lon": 139.74095146932095,
+                "title": "ベルトラン ラーシェ ル ブルターニュ 神楽坂",
+                "pinColor": "blue",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：フレンチ<br>利用シーン：デート<br><a href="https://tabelog.com/tokyo/A1309/A130905/13147707/" target="_blank">食べログページ</a><img src="../img/BERTRAND.jpg" width="100%">',
+                "show": false
+            };
+            options[6] = {
+                "lat": 35.66708353698782,
+                "lon": 139.70692620000003,
+                "title": "RESTAURANT HYÉNE",
+                "pinColor": "blue",
+                "height": 300,
+                "width": 250,
+                "description": 'ジャンル：フレンチ<br>利用シーン：デート<br><a href="https://tabelog.com/tokyo/A1306/A130601/13262694/" target="_blank">食べログページ</a><img src="../img/HYUNE.jpg" width="100%">',
+                "show": false
+            };
+
+            //----------------------------------------------------
+            //4. Switch infoboxs
+            //   infoboxLayers(options, true); //true=one, false=Multiple
+            //----------------------------------------------------
+            map.infoboxLayers(options, true);
+        }
+    </script>
+</body>
+
+</html>
